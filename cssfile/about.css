@@ -1,0 +1,183 @@
+body {
+    margin: 0;
+    background-image: url(../photos/Background.png.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    animation-delay: 1s;
+    opacity: 0;
+    animation: fadeIn 0.3s ease 0.1s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* --- NAV BAR (UNCHANGED) --- */
+.navigation_container {
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-wrap: wrap;
+}
+
+.Logo-container {
+    display: flex;
+    margin-left: 3%;
+    gap: 18%;
+}
+
+.Logo {
+    width: 80px;
+    height: auto;
+}
+
+.Logo-name {
+    margin-top: 2%;
+    width: 20%;
+    text-decoration: none;
+    font-size: 90%;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    font-size: 100%;
+    color: rgb(3, 47, 21);
+}
+
+.Button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    margin-left: clamp(20%, 20%, 20%);
+    margin-right: 5%;
+    text-wrap: wrap;
+}
+
+button {
+    border: transparent;
+    background-color: transparent;
+    color: black;
+    font-family: Verdana;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    transition: width 0.5s, border-color 0.2s;
+    font-size: 13px;
+    letter-spacing: 10%;
+    text-wrap: wrap;
+    font-size: 90%;
+}
+
+button:hover {
+    cursor: pointer;
+    border: 2px solid rgb(3, 47, 21);
+    width: 110px;
+}
+
+/* --- FLEXIBLE CONTENT (UPDATED) --- */
+
+.about-container {
+    /* Padding scales with screen width and height */
+    padding: 5vh 10vw; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: white;
+}
+
+.about-hero {
+    text-align: center;
+    background: rgba(3, 47, 21, 0.85);
+    padding: 5vh 5%;
+    border-radius: 20px;
+    margin-bottom: 4vh;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.about-hero h1 {
+    /* Text size will scale between 1.8rem and 2.5rem based on screen width */
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 15px;
+    color: beige;
+}
+
+.about-hero p {
+    font-size: clamp(1rem, 1.2vw, 1.1rem);
+    line-height: 1.6;
+}
+
+.goals-grid {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 5vh;
+}
+
+.goal-card {
+    background: rgb(243, 243, 227);
+    color: rgb(0, 0, 0);
+    padding: 30px 20px;
+    /* Cards will take up 250px but can expand up to 300px */
+    width: clamp(250px, 20vw, 300px); 
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+.goal-card:hover {
+    transform: translateY(-10px);
+}
+
+.goal-card img {
+    width: 60px;
+    height: auto;
+    margin-bottom: 15px;
+}
+
+.team-section {
+    text-align: center;
+    color: #000000;
+    padding-bottom: 5vh;
+}
+
+#meet {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    margin-bottom: 3vh;
+}
+
+.team-container {
+    display: flex;
+    justify-content: center;
+    gap: 5vw;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.member {
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.member h3 {
+    color: rgb(8, 8, 8);
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.member p {
+    font-style: italic;
+    opacity: 0.8;
+}
+
+#list {
+    /* Fixed small width for the pngwing icon as per your original ID */
+    width: 40px !important; 
+    margin: 10px auto;
+}

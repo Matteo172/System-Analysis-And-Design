@@ -31,6 +31,7 @@ body.fade-out {
 }
 
 .btn-back:hover{
+    cursor: pointer;
     width: 8vw;
     transition: 0.1s ease-in-out 0.1s;
 }
@@ -42,6 +43,7 @@ body.fade-out {
 }
 
 .btn-back:hover .backbutton{
+    cursor: pointer;
     width: 3vh;
     transition: 0.1s ease-in-out 0.1s;
 }
@@ -56,6 +58,7 @@ body.fade-out {
 }
 
 .btn-back:hover .back{
+    cursor: pointer;
     font-size: 3.2vh;
 }
 
@@ -192,60 +195,12 @@ label{
 
 }
 
-.track-blotter{
-    position: absolute;
-    bottom: 5vh;
-    left: 22%;
-    background-color: rgb(3, 47, 21);
-    width: 20%;
-    height: 20vh;
-    border-radius: 15px;
-}
-
-.blotter-track{
-    position: absolute;
-    left: 18%;
-    top: 10%;
-    white-space: nowrap;
-    font-size: 2vh;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    color: rgb(205, 205, 181);
-    font-weight: bold;
-}
-
-.blot-ref{
-    position: absolute;
-    top: 40%;
-    left: 7%;
-    font-size: 1.8vh;
-    color: rgb(205, 205, 181);
-}
-
-.blot-number{
-    padding: 3%;
-    position: absolute;
-    top: 54%;
-    left: 7%;
-    width: 15.8vw;
-    height: 2vh;
-    border-radius: 10px;
-    background-color: rgb(205, 205, 181);
-    font-size: 1.5vh;
-    letter-spacing: 13%;
-}
-
-
-.blot-number::-webkit-outer-spin-button,
-.blot-number::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
-}
 
 
 .track-document{
     position: absolute;
-    bottom: 5vh;
-    left: 59%;
+    bottom: 3.6vh;
+    left: 40.5%;
     background-color: rgb(3, 47, 21);
     width: 20%;
     height: 20vh;
@@ -254,7 +209,7 @@ label{
 
 .document-track{
     position: absolute;
-    left: 15%;
+    left: 20.9%;
     top: 10%;
     white-space: nowrap;
     font-size: 2vh;
@@ -292,7 +247,29 @@ label{
   margin: 0;
 }
 
+.track-btn {
+    position: absolute;
+    bottom: 20%;
+    right: 25%;
+    background-color: rgb(205, 205, 181);
+    color: rgb(3, 47, 21);
+    border: none;
+    border-radius: 8px;
+    font-size: 1.5vh;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    transition: 0.2s ease;
+    width: 10vw;
+    height: 6vh;
+}
 
+.track-btn:hover {
+    background-color: rgb(255, 255, 220);
+    transform: translateY(-2px);
+    border: none;
+    width: 10vw;
+}
 
 
 

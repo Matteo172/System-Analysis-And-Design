@@ -1,0 +1,158 @@
+body {
+    margin: 0;
+    background-image: url(../photos/Background.png.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; /* Ensures background stays still on mobile */
+    animation-delay: 1s;
+    opacity: 0;
+    animation: fadeIn 0.3s ease 0.1s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+body.fade-out {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+/* --- NAV BAR (UNCHANGED) --- */
+.navigation_container {
+    padding: 2vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    text-wrap: wrap;
+}
+
+.Logo-container {
+    display: flex;
+    margin-left: 3%;
+    gap: 18%;
+}
+
+.Logo {
+    width: 80px;
+    height: auto;
+}
+
+.Logo-name {
+    margin-top: 2%;
+    width: 20%;
+    text-decoration: none;
+    font-size: 90%;
+    font-family: Arial, Helvetica, sans-serif;
+    white-space: nowrap;
+    font-size: 100%;
+    color: rgb(3, 47, 21);
+}
+
+.Button-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 25px;
+    margin-left: clamp(20%, 20%, 20%);
+    margin-right: 5%;
+    text-wrap: wrap;
+}
+
+button {
+    border: transparent;
+    background-color: transparent;
+    color: black;
+    font-family: Verdana;
+    height: 30px;
+    width: 100px;
+    border-radius: 5px;
+    transition: width 0.5s, border-color 0.2s;
+    font-size: 13px;
+    letter-spacing: 10%;
+    text-wrap: wrap;
+    font-size: 90%;
+}
+
+button:hover {
+    cursor: pointer;
+    border: 2px solid rgb(3, 47, 21);
+    width: 110px;
+}
+
+/* --- FLEXIBLE SERVICES CONTENT (UPDATED) --- */
+
+.services-wrapper {
+    /* Padding now uses viewport units to breathe on different screens */
+    padding: 5vh 10vw; 
+    color: #000000;
+}
+
+.services-header {
+    text-align: center;
+    margin-bottom: 5vh;
+}
+
+.services-header h1 {
+    /* Font size scales: minimum 2rem, preferred 4% of width, max 3.5rem */
+    font-size: clamp(2rem, 4vw, 3.5rem); 
+    color: #000000;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.service-section {
+    margin-bottom: 6vh;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 3vh;
+    border-bottom: 2px solid rgb(243, 243, 227);
+    padding-bottom: 10px;
+}
+
+/* Updated specific list picture size */
+#listpic {
+    width: clamp(25px, 5vw, 40px);
+}
+
+.section-title img {
+    /* Responsive icons in titles */
+    width: clamp(40px, 6vw, 60px);
+}
+
+.services-grid {
+    display: flex;
+    flex-wrap: wrap; /* CRITICAL: Allows cards to drop to next line on mobile */
+    gap: 2vw;
+    justify-content: center; /* Center cards when they wrap */
+}
+
+.service-card {
+    background-color: rgb(243, 243, 227);
+    color: rgb(0, 0, 0);
+    padding: 25px 20px;
+    /* Cards will be at least 250px, but grow up to 320px */
+    width: clamp(250px, 22vw, 320px); 
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: translateY(-5px);
+}
+
+.service-card h4 {
+    margin-top: 0;
+    font-size: clamp(1.1rem, 1.5vw, 1.3rem);
+    color: rgb(3, 47, 21);
+}
+
+.service-card p {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    line-height: 1.5;
+}

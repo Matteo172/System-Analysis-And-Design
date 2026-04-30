@@ -7,145 +7,144 @@
         <meta charset="UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="icon" href="photos/logo.png.png"/>
-
     </head>
-
-
-
 
     <body>
 
         <button class="btn-back" onclick="history.back()">
-            
             <image class="backbutton" src="photos/backbutton.png"></image>
             <label class="back">Back</label>
-
         </button>
-
 
         <div class="form-container">
             <div class="form-header">
-            <div class="header-icon">
-                <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                <div class="header-icon">
+                    <svg viewBox="0 0 24 24" width="24" height="24" fill="white"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+                </div>
+                <div class="header-text">
+                    <h2>Personal Information</h2>
+                    <p>Please provide your details accurately as they will appear on the document</p>
+                </div>
             </div>
-            <div class="header-text">
-                <h2>Personal Information</h2>
-                <p>Please provide your details accurately as they will appear on the document</p>
-            </div>
+
+           
+            <form class="personal-info-form" id="personal-info-form" onsubmit="return false;">
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>FIRST NAME <span class="required">*</span></label>
+                        <input type="text" name="first_name" placeholder="e.g. Juan" required>
+                    </div>
+                    <div class="form-group">
+                        <label>LAST NAME <span class="required">*</span></label>
+                        <input type="text" name="last_name" placeholder="e.g. Dela Cruz" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>MIDDLE NAME</label>
+                        <input type="text" name="middle_name" placeholder="e.g. Santos">
+                    </div>
+                    <div class="form-group">
+                        <label>BIRTHDAY <span class="required">*</span></label>
+                        <input type="date" name="birthday" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>AGE <span class="required">*</span></label>
+                        <input type="number" name="age" min="0" placeholder="0" required>
+                    </div>
+                    <div class="form-group">
+                        <label>GENDER <span class="required">*</span></label>
+                        <select name="gender" required>
+                            <option value="">— Select —</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>CIVIL STATUS <span class="required">*</span></label>
+                        <select name="civil_status" required>
+                            <option value="">— Select —</option>
+                            <option>Single</option>
+                            <option>Married</option>
+                            <option>Widowed</option>
+                            <option>Separated</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>CONTACT NUMBER <span class="required">*</span></label>
+                        <input type="text" name="contact" placeholder="09XX XXX XXXX" required
+                               pattern="^(09|\+639)\d{9}$"
+                               title="Enter a valid PH number (e.g. 09171234567)">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>BIRTHPLACE <span class="required">*</span></label>
+                    <input type="text" name="birthplace" placeholder="City/Province" required>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>LENGTH OF STAY (YEARS) <span class="required">*</span></label>
+                        <input type="number" name="stay_years" min="0" placeholder="Years" required>
+                    </div>
+                    <div class="form-group">
+                        <label>LENGTH OF STAY (MONTHS)</label>
+                        <input type="number" name="stay_months" min="0" max="11" placeholder="Months">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-group">
+                        <label>KIND OF CERTIFICATE <span class="required">*</span></label>
+                        <select name="certificate" required>
+                            <option value="">— Select Certificate —</option>
+                            <option>Barangay Clearance</option>
+                            <option>Certificate of Indigency</option>
+                            <option>Certificate of Residency</option>
+                            <option>Business Permit</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>QUANTITY (ILAN) <span class="required">*</span></label>
+                        <input type="number" name="quantity" min="1" value="1" required>
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label>PURPOSE <span class="required">*</span></label>
+                    <input type="text" name="purpose" placeholder="Reason for request (e.g., Job Requirement)" required>
+                </div>
+
+            </form>
+
+            <!-- ✅ Only one onclick now -->
+            <button class="btn-submit" type="button" onclick="validateAndSubmit()">Submit</button>
+
         </div>
 
-        <form class="personal-info-form">
-            <div class="row">
-                <div class="form-group">
-                    <label>FIRST NAME <span class="required">*</span></label>
-                    <input type="text" placeholder="e.g. Juan">
-                </div>
-                <div class="form-group">
-                    <label>LAST NAME <span class="required">*</span></label>
-                    <input type="text" placeholder="e.g. Dela Cruz">
-                </div>
-            </div>
+        <script>
+        function validateAndSubmit() {
+            const form = document.getElementById("personal-info-form");
 
-            <div class="row">
-                <div class="form-group">
-                    <label>MIDDLE NAME</label>
-                    <input type="text" placeholder="e.g. Santos">
-                </div>
-                <div class="form-group">
-                    <label>BIRTHDAY <span class="required">*</span></label>
-                    <input type="date">
-                </div>
-            </div>
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                return;
+            }
+            window.location.href = "DocumentSuccess.html";
+        }
+        </script>
 
-            <div class="row">
-                <div class="form-group">
-                    <label>AGE <span class="required">*</span></label>
-                    <input type="number" min="0" placeholder="0">
-                </div>
-                <div class="form-group">
-                    <label>GENDER <span class="required">*</span></label>
-                    <select>
-                        <option>— Select —</option>
-                        <option>Male</option>
-                        <option>Female</option>
-                        <option>Other</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <label>CIVIL STATUS <span class="required">*</span></label>
-                    <select>
-                        <option>— Select —</option>
-                        <option>Single</option>
-                        <option>Married</option>
-                        <option>Widowed</option>
-                        <option>Separated</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>CONTACT NUMBER <span class="required">*</span></label>
-                    <input type="text" placeholder="09XX XXX XXXX">
-                </div>
-            </div>
-
-            <div class="form-group full-width">
-                <label>BIRTHPLACE <span class="required">*</span></label>
-                <input type="text" placeholder="City/Province">
-            </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <label>LENGTH OF STAY (YEARS) <span class="required">*</span></label>
-                    <input type="number" min="0" placeholder="Years">
-                </div>
-                <div class="form-group">
-                    <label>LENGTH OF STAY (MONTHS)</label>
-                    <input type="number" min="0" max="11" placeholder="Months">
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="form-group">
-                    <label>KIND OF CERTIFICATE <span class="required">*</span></label>
-                    <select>
-                        <option>— Select Certificate —</option>
-                        <option>Barangay Clearance</option>
-                        <option>Certificate of Indigency</option>
-                        <option>Certificate of Residency</option>
-                        <option>Business Permit</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label>QUANTITY (ILAN) <span class="required">*</span></label>
-                    <input type="number" min="1" value="1">
-                </div>
-            </div>
-
-            <div class="form-group full-width">
-                <label>PURPOSE <span class="required">*</span></label>
-                <input type="text" placeholder="Reason for request (e.g., Job Requirement)">
-            </div>
-        </form>
-    </div>
-
-    <!-- <div class="content-wrapper"> 
-        
-        <div class="tracking-container">
-
-            <h2 class="track-word"> Track your Document</h2>
-
-            <label class="ref-word">Reference Number</label>
-
-            <input class="ref-number" type="number" placeholder="Enter Reference Number"/>
-
-        </div>
-        
-    </div> -->
-
+        <script src="Javascript/residentform.js"></script>
 
     </body>
-
 </html>
-
