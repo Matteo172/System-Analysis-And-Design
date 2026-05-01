@@ -529,6 +529,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const existing = document.getElementById("confirm-modal");
     if (existing) existing.remove();
 
+    // Pre-fill today's date in PH local time (YYYY-MM-DD)
+    const todayLocal = new Date();
+    const yyyy = todayLocal.getFullYear();
+    const mm   = String(todayLocal.getMonth() + 1).padStart(2, "0");
+    const dd   = String(todayLocal.getDate()).padStart(2, "0");
+    const todayStr = `${yyyy}-${mm}-${dd}`;
+
     const confirmOverlay = document.createElement("div");
     confirmOverlay.className = "confirm-overlay";
     confirmOverlay.id = "confirm-modal";
@@ -541,15 +548,28 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="confirm-note">
                 <strong>📌 Please Note:</strong>
                 Once confirmed, this record will be <strong>locked</strong> to prevent accidental changes.<br><br>
-                ✅ The date released will be automatically recorded as today.<br>
                 🔓 You can <b>unlock</b> this record at any time by opening it and selecting a different status.
+            </div>
+            <div style="margin:1.5vh 0 2vh;text-align:left;">
+                <label style="font-size:1.45vh;font-weight:700;color:#273b07;display:block;margin-bottom:0.6vh;">
+                    📅 Date Released
+                </label>
+                <input type="date" id="release-date-input"
+                    value="${todayStr}"
+                    max="${todayStr}"
+                    style="width:100%;padding:0.9vh 0.8vw;border:1.5px solid #7d9e3b;border-radius:8px;
+                        font-size:1.6vh;color:#273b07;background:#fff;outline:none;cursor:pointer;
+                        box-sizing:border-box;">
+                <span style="font-size:1.25vh;color:#888;display:block;margin-top:0.4vh;">
+                    You may change this date if needed (cannot be a future date).
+                </span>
             </div>
             <div class="confirm-buttons">
                 <button class="confirm-btn-no" onclick="document.getElementById('confirm-modal').remove()">
                     No, Go Back
                 </button>
                 <button class="confirm-btn-yes" onclick="confirmRelease(${requestId})">
-                    Yes, Mark as Released
+                    ✅ Yes, Mark as Released
                 </button>
             </div>
         </div>`;
@@ -557,18 +577,30 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   window.confirmRelease = function (requestId) {
+    const dateInput = document.getElementById("release-date-input");
+    const chosenDate = dateInput ? dateInput.value : "";
+
+    if (!chosenDate) {
+      dateInput.style.border = "1.5px solid #cc0000";
+      dateInput.placeholder = "Please select a date";
+      return;
+    }
+
     document.getElementById("confirm-modal").remove();
-    doSave(requestId, "Released");
+    doSave(requestId, "Released", chosenDate);
   };
 
-  function doSave(requestId, newStatus) {
+  function doSave(requestId, newStatus, dateReleased) {
     const saveBtn = document.getElementById("modal-save-btn");
     if (saveBtn) { saveBtn.textContent = "Saving…"; saveBtn.disabled = true; }
+
+    const payload = { request_ID: requestId, status: newStatus };
+    if (dateReleased) payload.date_released = dateReleased;
 
     fetch("php/GetDocuments.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ request_ID: requestId, status: newStatus }),
+      body: JSON.stringify(payload),
     })
       .then((res) => res.json())
       .then((data) => {

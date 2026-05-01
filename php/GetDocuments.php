@@ -167,11 +167,22 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         // If JS sent clear_date_released = true (user clicked Unlock),
         // force date_released to NULL right away regardless of status.
-        // Otherwise use normal logic: today if Released, null if anything else.
+        // Otherwise: if Released, use the manually chosen date sent from JS
+        // (falls back to today if somehow not provided). Null for all other statuses.
         if (!empty($data["clear_date_released"])) {
             $date_released = null;
+        } elseif ($data["status"] === "Released") {
+            if (!empty($data["date_released"])) {
+                // Validate it's a real YYYY-MM-DD date before using it
+                $d = DateTime::createFromFormat("Y-m-d", $data["date_released"]);
+                $date_released = ($d && $d->format("Y-m-d") === $data["date_released"])
+                    ? $data["date_released"]
+                    : date("Y-m-d"); // fallback to today if malformed
+            } else {
+                $date_released = date("Y-m-d"); // fallback if JS somehow omits it
+            }
         } else {
-            $date_released = ($data["status"] === "Released") ? date("Y-m-d") : null;
+            $date_released = null;
         }
 
         $stmt = $pdo->prepare(
